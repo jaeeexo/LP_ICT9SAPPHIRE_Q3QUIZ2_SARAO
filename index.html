@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticketing Center</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-size: cover;
+            color: #f8f9fa;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(20, 20, 20, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        .btn-custom {
+            background-color: #3d404d;
+            color: white;
+            border: none;
+            transition: background 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #18736d;
+        }
+        .section-header {
+            background-color: #10b589;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-white p-3 bg-dark rounded">Weeknd's After Hours</h1>
+        
+        <div class="section-header">
+            <h5>▼ Personal Information</h5>
+            <p>Fill out the form below.</p>
+        </div>
+        <input type="text" class="form-control mb-2" placeholder="Complete Name">
+        <input type="email" class="form-control mb-2" placeholder="Email">
+        <button class="btn btn-custom w-100 mb-3">SUBMIT INFO</button>
+        
+        <div class="section-header">
+            <h5>▼ Ticket Price</h5>
+            <p>Check your ticket price.</p>
+        </div>
+        <select class="form-select mb-2" id="seat">
+            <option value="none">Choose your seat</option>
+            <option value="750">VIP - $500</option>
+            <option value="470">Regular - $300</option>
+            <option value="150">Economy - $200</option>
+        </select>
+        <select class="form-select mb-2" id="discount">
+            <option value="none">Choose an option</option>
+            <option value="0.2">Student/Senior - 20% Off</option>
+            <option value="0">Regular</option>
+        </select>
+        <button class="btn btn-custom w-100 mb-3" onclick="calculatePrice()">TICKET PRICE</button>
+        
+        <div class="section-header">
+            <h5>▼ Print Ticket</h5>
+            <p>Select your ticket.</p>
+        </div>
+        <img src="abel.jpg" class="img-fluid mb-2" alt="Ticket">
+        <button class="btn btn-custom w-100">PRINT TICKET</button>
+        
+        <button class="btn btn-primary w-100 mt-3">Buy more tickets</button>
+    </div>
+    
+    <script>
+        function calculatePrice() {
+            var seatPrice = document.getElementById('seat').value;
+            var discount = document.getElementById('discount').value;
+            if (seatPrice === 'none' || discount === 'none') {
+                alert('Please select both seat and discount option.');
+                return;
+            }
+            var finalPrice = seatPrice - (seatPrice * discount);
+            alert('Your ticket price is $' + finalPrice);
+        }
+    </script>
+</body>
+</html>
